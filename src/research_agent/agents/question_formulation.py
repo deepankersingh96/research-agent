@@ -5,12 +5,12 @@ from langgraph.graph import StateGraph, START, END
 from pydantic import BaseModel
 from typing_extensions import TypedDict
 
-from state import QuestionFormulationState
-from utils import render_yaml_prompt
+from research_agent.state import QuestionFormulationState
+from research_agent.utils import render_yaml_prompt
 
 # Define prompts
-prompt_research_brief = "./prompts/question_formulation/research_brief.yaml"
-prompt_question_formulation = "./prompts/question_formulation/question_formulation.yaml"
+prompt_research_brief = "src/research_agent/prompts/research_brief.yaml"
+prompt_question_formulation = "src/research_agent/prompts/question_formulation.yaml"
 
 
 class ResearchBrief(TypedDict):
@@ -29,16 +29,20 @@ class ResearchBrief(TypedDict):
     assumptions: list[str]
 
 
+# Internal output structures
 class QuestionFormulationDecision(BaseModel):
     needs_clarification: bool
     clarification_question: str | None = None
 
 
-class QuestionFormulationResult(BaseModel):
-    decision: QuestionFormulationDecision
+# class QuestionFormulationResult(BaseModel):
+#     decision: QuestionFormulationDecision
 
 
-class QuestionFormulation:
+# Node definition
+# PCC Question Formulation Agent TODO: Add PICOC, PICO, SPYDER, etc.
+# The agent will remain the same. Only the prompts for the agent will change.
+class QuestionFormulationAgent:
     def __init__(self, model_name, max_user_clarification_count, openai_key):
 
         self.model = init_chat_model(
@@ -46,9 +50,8 @@ class QuestionFormulation:
         )
         self.max_user_clarification_count = max_user_clarification_count
 
-    def question_formulation(self, state: dict):
-        """Gather information from the user"""
-        result = self.model.with_structured_output(QuestionFormulationResult).invoke(
+    def clarification_node(self, state: dict):
+        result = self.model.with_structured_output(QuestionFormulationDecision).invoke(
             [
                 SystemMessage(
                     content=render_yaml_prompt(
@@ -63,12 +66,12 @@ class QuestionFormulation:
             + state["messages"]
         )
         return {
-            "needs_clarification": result.decision.needs_clarification,
-            "clarification_question": result.decision.clarification_question or "",
+            "needs_clarification": result.needs_clarification,
+            "clarification_question": result.clarification_question or "",
             "llm_call": state.get("llm_call", 0) + 1,
         }
 
-    def researh_brief_generation(self, state: dict):
+    def researh_brief_generation_node(self, state: dict):
         """Generate initial research formuation in structured output"""
         brief = self.model.with_structured_output(ResearchBrief).invoke(
             [SystemMessage(content=render_yaml_prompt(prompt_research_brief))]
@@ -77,8 +80,7 @@ class QuestionFormulation:
 
         return {"research_brief": brief, "llm_call": state.get("llm_call", 0) + 1}
 
-    def clarification_node(self, state: dict):
-        """Ask the user for the single most important missing detail."""
+    def user_input_node(self, state: dict):
         question = state["clarification_question"]
         observation = input(f"Agent: {question}\nYour answer: ")
         return {
@@ -89,40 +91,66 @@ class QuestionFormulation:
             "user_clarification_count": state.get("user_clarification_count", 0) + 1,
         }
 
-    def should_continue(
+    def router_node(
         self,
         state: QuestionFormulationState,
-        max_user_clarification_count: int,
-    ) -> Literal["clarification_node", "researh_brief_generation"]:
-        """Decide whether to ask for clarification or generate the brief."""
+    ) -> Literal["clarification_node", "researh_brief_generation_node"]:
+        """Decide whether to take user input or generate the brief."""
         if (
             state.get("needs_clarification", False)
-            and state.get("user_clarification_count", 0) < max_user_clarification_count
+            and state.get("user_clarification_count", 0)
+            < self.max_user_clarification_count
         ):
-            return "clarification_node"
-        return "researh_brief_generation"
+            return "user_input_node"
+        return "researh_brief_generation_node"
 
-    def build_question_formulation_subgraph(
+    def build_graph(
         self,
     ):
         # Build workflow
         agent_builder = StateGraph(QuestionFormulationState)
 
         # Add nodes
-        agent_builder.add_node("question_formulation", self.question_formulation)
-        agent_builder.add_node(
-            "researh_brief_generation", self.researh_brief_generation
-        )
         agent_builder.add_node("clarification_node", self.clarification_node)
+        agent_builder.add_node(
+            "researh_brief_generation_node", self.researh_brief_generation_node
+        )
+        agent_builder.add_node("user_input_node", self.user_input_node)
 
         # Add edges
-        agent_builder.add_edge(START, "question_formulation")
+        agent_builder.add_edge(START, "clarification_node")
         agent_builder.add_conditional_edges(
-            "question_formulation",
-            self.should_continue,
-            ["clarification_node", "researh_brief_generation"],
+            "clarification_node",
+            self.router_node,
+            ["user_input_node", "researh_brief_generation_node"],
         )
-        agent_builder.add_edge("clarification_node", "question_formulation")
-        agent_builder.add_edge("researh_brief_generation", END)
+        agent_builder.add_edge("user_input_node", "clarification_node")
+        agent_builder.add_edge("researh_brief_generation_node", END)
 
         return agent_builder
+
+
+if __name__ == "__main__":
+    import os
+    from pprint import pprint
+
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
+    question_formulation_agent = (
+        QuestionFormulationAgent(
+            model_name=os.environ.get("OPENAI_MODEL_NAME"),
+            max_user_clarification_count=3,
+            openai_key=os.environ.get("OPENAI_API_KEY"),
+        )
+        .build_graph()
+        .compile()
+    )
+
+    query = input(f"Enter your research query: ")
+    messages = [HumanMessage(content=query)]
+    result = question_formulation_agent.invoke({"messages": messages})
+    for m in result["messages"]:
+        m.pretty_print()
+    pprint(result["research_brief"])
