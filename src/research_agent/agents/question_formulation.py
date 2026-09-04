@@ -5,7 +5,7 @@ from langgraph.graph import StateGraph, START, END
 from pydantic import BaseModel
 from typing_extensions import TypedDict
 
-from research_agent.state import QuestionFormulationState
+from research_agent.state import QuestionFormulationState, FormulatedQuestion
 from research_agent.utils import render_yaml_prompt
 
 # Define prompts
@@ -13,20 +13,20 @@ prompt_research_brief = "src/research_agent/prompts/research_brief.yaml"
 prompt_question_formulation = "src/research_agent/prompts/question_formulation.yaml"
 
 
-class ResearchBrief(TypedDict):
-    research_question: str
-    research_type: Literal[
-        "fact_finding",
-        "comparison",
-        "trend_analysis",
-        "evaluation",
-        "exploration",
-        "decision_support",
-    ]
-    scope: list[str]
-    constraints: list[str]
-    success_criteria: list[str]
-    assumptions: list[str]
+# class ResearchBrief(TypedDict):
+#     research_question: str
+#     research_type: Literal[
+#         "fact_finding",
+#         "comparison",
+#         "trend_analysis",
+#         "evaluation",
+#         "exploration",
+#         "decision_support",
+#     ]
+#     scope: list[str]
+#     constraints: list[str]
+#     success_criteria: list[str]
+#     assumptions: list[str]
 
 
 # Internal output structures
@@ -73,7 +73,7 @@ class QuestionFormulationAgent:
 
     def researh_brief_generation_node(self, state: dict):
         """Generate initial research formuation in structured output"""
-        brief = self.model.with_structured_output(ResearchBrief).invoke(
+        brief = self.model.with_structured_output(FormulatedQuestion).invoke(
             [SystemMessage(content=render_yaml_prompt(prompt_research_brief))]
             + state["messages"]
         )
