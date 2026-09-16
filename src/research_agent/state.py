@@ -26,13 +26,13 @@ class FormulatedQuestion(TypedDict):
     domain: GeneralResearchDomain
     review_type: Literal['systematic', 'narrative', 'scoping', 'rapid', 'umbrella']
     framework: Literal['PICO', 'PICOC', 'PCC']
-    question: type[PICOCQuestion]
+    question: PICOCQuestion
 
 
 class BaseState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
     llm_call: int
-    formulated_question: type[FormulatedQuestion]
+    formulated_question: FormulatedQuestion
 
 
 # TODO: this is an internal state and should be moved to question formulation code.
@@ -40,7 +40,7 @@ class QuestionFormulationState(BaseState, total=False):
     user_clarification_count: int
     needs_clarification: bool
     clarification_question: str
-    formulated_question: type[FormulatedQuestion]
+    formulated_question: FormulatedQuestion
 
 
     

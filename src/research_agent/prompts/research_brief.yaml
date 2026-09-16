@@ -52,4 +52,5 @@ system: |
   8. Do not answer the user's question.
 
   Field Definitions:
+  - Return the otuput as per the structured output schema. 
 # TODO: use pydantic so that the definitions can be provided at runtime. 

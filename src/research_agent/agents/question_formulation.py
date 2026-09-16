@@ -78,7 +78,7 @@ class QuestionFormulationAgent:
             + state["messages"]
         )
 
-        return {"research_brief": brief, "llm_call": state.get("llm_call", 0) + 1}
+        return {"formulated_question": brief, "llm_call": state.get("llm_call", 0) + 1}
 
     def user_input_node(self, state: dict):
         question = state["clarification_question"]
@@ -153,4 +153,5 @@ if __name__ == "__main__":
     result = question_formulation_agent.invoke({"messages": messages})
     for m in result["messages"]:
         m.pretty_print()
-    pprint(result["research_brief"])
+    print(result.keys())
+    pprint(result["formulated_question"])
