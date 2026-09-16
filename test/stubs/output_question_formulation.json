@@ -1,0 +1,25 @@
+{
+    "domain": "technology_and_computer_science",
+    "review_type": "systematic",
+    "framework": "PICOC",
+    "question": {
+        "population": [
+            "ECU software systems and their executable test artifacts (ECU test scripts)"
+        ],
+        "intervention": [
+            "Retrieval-Augmented Generation (RAG) systems for generating executable ECU test scripts"
+        ],
+        "comparison": [
+            "Manually authored executable ECU test scripts by ECU test engineers"
+        ],
+        "outcome": [
+            "Reduction in test-spec/script authoring time and effort",
+            "Quality improvements of generated test scripts (e.g., fault-detection effectiveness, requirement coverage, correctness/validity, adherence to ECU test standards)",
+            "Improved maintainability or consistency of test scripts"
+        ],
+        "context": [
+            "Automotive embedded software testing environments (ECU testing), including safety/reliability-driven industrial settings where traceability to requirements and compliance matter"
+        ]
+    },
+    "assumptions": []
+}

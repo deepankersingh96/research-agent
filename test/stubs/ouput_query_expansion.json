@@ -1,0 +1,110 @@
+{
+    "framework": "PICOC",
+    "concepts": [
+        {
+            "name": "population",
+            "value": [
+                "ECU software systems and their executable test artifacts (ECU test scripts)"
+            ],
+            "synonyms": [
+                "embedded control unit software",
+                "ECU software",
+                "electronic control unit software",
+                "ECU test scripts",
+                "embedded system test scripts",
+                "automotive software test scripts",
+                "executable test artifacts"
+            ]
+        },
+        {
+            "name": "intervention",
+            "value": [
+                "Retrieval-Augmented Generation (RAG) systems for generating executable ECU test scripts"
+            ],
+            "synonyms": [
+                "retrieval augmented generation",
+                "RAG system",
+                "RAG models",
+                "retrieval-augmented generation",
+                "retrieval augmentation",
+                "language model with retrieval",
+                "LLM retrieval"
+            ]
+        },
+        {
+            "name": "comparison",
+            "value": [
+                "Manually authored executable ECU test scripts by ECU test engineers"
+            ],
+            "synonyms": [
+                "manual test script authoring",
+                "human-authored test scripts",
+                "engineer-written test scripts",
+                "handwritten test scripts",
+                "manual testing workflows"
+            ]
+        },
+        {
+            "name": "outcome",
+            "value": [
+                "Reduction in test-spec/script authoring time and effort",
+                "Quality improvements of generated test scripts (e.g., fault-detection effectiveness, requirement coverage, correctness/validity, adherence to ECU test standards)",
+                "Improved maintainability or consistency of test scripts"
+            ],
+            "synonyms": [
+                "test authoring effort reduction",
+                "test specification authoring time",
+                "test script quality",
+                "fault detection effectiveness",
+                "fault finding",
+                "requirement trace coverage",
+                "requirement coverage",
+                "test correctness",
+                "test validity",
+                "standard compliance",
+                "ECU test standards",
+                "test maintainability",
+                "test consistency",
+                "maintainable test scripts",
+                "traceability to requirements"
+            ]
+        },
+        {
+            "name": "context",
+            "value": [
+                "Automotive embedded software testing environments (ECU testing), including safety/reliability-driven industrial settings where traceability to requirements and compliance matter"
+            ],
+            "synonyms": [
+                "automotive embedded software testing",
+                "ECU testing",
+                "embedded automotive testing",
+                "safety-critical automotive software testing",
+                "functional safety testing",
+                "reliability-driven testing",
+                "traceability to requirements",
+                "requirements traceability",
+                "compliance testing",
+                "safety standards compliance",
+                "industry automotive embedded testing"
+            ]
+        }
+    ],
+    "queries": [
+        {
+            "database": "arXiv",
+            "search_strings": [
+                "(all:\"ECU software\" OR all:\"electronic control unit software\" OR all:ECU OR all:\"embedded control unit software\") AND (all:\"Retrieval-Augmented Generation\" OR all:RAG OR all:\"retrieval augmented generation\" OR all:\"RAG system\" OR all:\"retrieval-augmented generation\") AND (all:\"executable test\" OR all:\"test scripts\" OR all:\"test artifacts\")",
+                "(all:\"ECU software\" OR all:\"electronic control unit software\" OR all:ECU OR all:\"embedded control unit software\") AND (all:\"Retrieval-Augmented Generation\" OR all:RAG OR all:\"retrieval augmented generation\" OR all:\"RAG system\" OR all:\"retrieval-augmented generation\") AND (all:\"test scripts\" OR all:\"executable test\") AND (all:\"fault detection\" OR all:\"fault-detection\" OR all:\"requirement coverage\" OR all:traceability OR all:compliance OR all:\"test correctness\" OR all:validity)",
+                "(all:\"ECU software\" OR all:\"electronic control unit software\" OR all:ECU OR all:\"embedded control unit software\") AND (all:\"retrieval augmented generation\" OR all:RAG OR all:\"retrieval-augmented generation\") AND (all:\"executable test\" OR all:\"test scripts\" OR all:\"test artifacts\") AND (all:\"traceability to requirements\" OR all:traceability OR all:\"requirements traceability\" OR all:compliance OR all:\"safety-critical\" OR all:\"safety\" OR all:reliability)"
+            ]
+        },
+        {
+            "database": "semantic_scholar",
+            "search_strings": [
+                "\"ECU testing\" RAG \"test scripts\"",
+                "\"ECU testing\" RAG \"fault detection\" \"requirement coverage\"",
+                "\"ECU testing\" \"retrieval augmented generation\" \"requirements traceability\" compliance safety-critical"
+            ]
+        }
+    ]
+}

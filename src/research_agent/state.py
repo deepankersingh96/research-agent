@@ -3,6 +3,7 @@ from typing import Annotated, NotRequired, Literal
 from typing_extensions import TypedDict
 from langchain_core.messages import AnyMessage
 import operator
+from pydantic import BaseModel, Field
 
 
 GeneralResearchDomain = Literal[
@@ -43,4 +44,23 @@ class QuestionFormulationState(BaseState, total=False):
     formulated_question: FormulatedQuestion
 
 
-    
+# Query expansion states
+class Concept(BaseModel):
+    name: str = Field(description="Name of the dimension, like population, context, comparison, etc, in PICOC framework.")
+    value: list[str] = Field(description="The value of the dimension as mentioned in the Formulated Question.")
+    synonyms: list[str] = Field(description="Synonyms for the dimension concept as used in the popular literature.")
+
+
+class Query(BaseModel):
+    database: Literal["arXiv", "semantic_scholar", "bioRxiv"]
+    search_strings: list[str] = Field(description="Final searchable string formatted as per the database type.")
+
+
+class ExpandedQuery(BaseModel):
+    framework: Literal['PICO', 'PICOC', 'PCC'] = Field(description="Name of the framework chosen to formulate the research question.")
+    concepts: list[Concept]
+    queries: list[Query]
+
+class QueryExpansionState(BaseState):
+    formulated_question: FormulatedQuestion
+    expanded_queries: ExpandedQuery

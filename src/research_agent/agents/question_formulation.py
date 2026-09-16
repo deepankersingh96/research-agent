@@ -13,30 +13,10 @@ prompt_research_brief = "src/research_agent/prompts/research_brief.yaml"
 prompt_question_formulation = "src/research_agent/prompts/question_formulation.yaml"
 
 
-# class ResearchBrief(TypedDict):
-#     research_question: str
-#     research_type: Literal[
-#         "fact_finding",
-#         "comparison",
-#         "trend_analysis",
-#         "evaluation",
-#         "exploration",
-#         "decision_support",
-#     ]
-#     scope: list[str]
-#     constraints: list[str]
-#     success_criteria: list[str]
-#     assumptions: list[str]
-
-
 # Internal output structures
 class QuestionFormulationDecision(BaseModel):
     needs_clarification: bool
     clarification_question: str | None = None
-
-
-# class QuestionFormulationResult(BaseModel):
-#     decision: QuestionFormulationDecision
 
 
 # Node definition
@@ -132,6 +112,7 @@ class QuestionFormulationAgent:
 
 if __name__ == "__main__":
     import os
+    import json
     from pprint import pprint
 
     from dotenv import load_dotenv
@@ -155,3 +136,7 @@ if __name__ == "__main__":
         m.pretty_print()
     print(result.keys())
     pprint(result["formulated_question"])
+
+    # Save question formulation state
+    with open("/Users/deepankersingh/Projects/research-agent/test/stubs/output_question_formulation.json", "w") as fp: 
+        json.dump(result["formulated_question"], fp, indent=4)
