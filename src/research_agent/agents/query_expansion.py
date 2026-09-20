@@ -87,5 +87,5 @@ if __name__ == "__main__":
     pprint(result["expanded_queries"])
 
     # Save results. 
-    with open("/Users/deepankersingh/Projects/research-agent/test/stubs/ouput_query_expansion.json", "w") as fp: 
+    with open("/Users/deepankersingh/Projects/research-agent/test/stubs/output_query_expansion.json", "w") as fp: 
             json.dump(result["expanded_queries"].model_dump(mode="json"), fp, indent=4)

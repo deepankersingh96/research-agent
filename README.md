@@ -35,6 +35,35 @@ Evidence synthesis
 Report generation
 ```
 
+## Installation
+
+From the project root, install the package in editable mode:
+
+```bash
+pip install -e .
+```
+
+Set the environment variables required by the OpenAI-backed sub-agents before running them:
+
+```bash
+export OPENAI_API_KEY="your-api-key"
+export OPENAI_MODEL_NAME="your-model-name"
+```
+
+## Running individual sub-agents
+
+Run the currently implemented sub-agents from the project root after the editable installation:
+
+```bash
+# Formulate a PICOC research question interactively.
+python -m research_agent.agents.question_formulation
+
+# Expand a saved formulated question into arXiv search queries.
+python -m research_agent.agents.query_expansion
+```
+
+The question-formulation command prompts for an initial research topic and may ask clarifying questions. It writes its structured output to `test/stubs/output_question_formulation.json`; the query-expansion command reads that file and writes its result to `test/stubs/ouput_query_expansion.json`.
+
 ## Current implementation
 
 | Stage | Status | Current capability |

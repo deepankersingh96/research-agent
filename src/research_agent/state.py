@@ -64,3 +64,20 @@ class ExpandedQuery(BaseModel):
 class QueryExpansionState(BaseState):
     formulated_question: FormulatedQuestion
     expanded_queries: ExpandedQuery
+
+
+class Retrieval(BaseModel):
+    title : str
+    summary: str
+    source_url: str
+    authors: list[str]
+    categories: list[str] 
+    pdf_url: str
+    short_id: str
+
+class ListRetrievals(BaseModel):
+    list[Retrieval]
+
+class RetrieverState(QueryExpansionState):
+    filtered_retrievals: ListRetrievals
+    deduplicated_retrievals: ListRetrievals
