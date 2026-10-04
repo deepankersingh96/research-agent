@@ -1,0 +1,617 @@
+{
+    "retrievals": [
+        {
+            "title": "RTCM: a natural language based, automated, and practical test case generation framework",
+            "summary": "Based on our experience of collaborating with industry, we observed that test case generation usually relies on test case specifications (TCSs), commonly written in natural language, specifying test cases of a System Under Test at a high level of abstraction. In practice, TCSs are commonly used by test engineers as reference documents to perform these activities: 1) Manually executing test cases in TCSs; 2) Manually coding test cases in a test scripting language for automated test case execution. In the latter case, the gap between TCSs and executable test cases has to be filled by test engineers, requiring a significant amount of coding effort and domain knowledge. Motivated by the above observations from the industry, we first propose, in this paper, a TCS language, named as Restricted Test Case Modeling (RTCM), which is based on natural language and composed of an easy-to-use template, a set of restriction rules and keywords. Second, we propose a test case generation tool (aToucan4Test), which takes TCSs in RTCM as input and generates either manual test cases or automatically executable test cases, based on various coverage criteria defined on RTCM. To assess the applicability of RTCM, we manually modeled two industrial case studies and examined 30 automatically generated TCSs. To evaluate aToucan4Test, we modeled three subsystems of a Video Conferencing System developed by Cisco Systems, Norway and automatically generated executable test cases. These test cases were successfully executed on two commercial software versions. In the paper, we also discuss our experience of applying RTCM and aToucan4Test in an industrial context and compare our approach with other model-based testing methodologies.",
+            "source_url": "https://doi.org/10.1145/2771783.2771799",
+            "authors": [
+                "Tao Yue",
+                "Shaukat Ali",
+                "Man Zhang"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Advanced Software Engineering Methodologies",
+                "Software Engineering Techniques and Practices"
+            ],
+            "pdf_url": "",
+            "short_id": "W1999793044"
+        },
+        {
+            "title": "A New Environment for Integrated Development and Management of ECU Tests",
+            "summary": "Due to the rapidly increasing number of electronic control units (ECUs) in modern vehicles, software and ECU testing plays a major role within the development of automotive electronics. To ensure effective as well as efficient testing within the whole development process, a seamless transition in terms of the reusability of tests and test data as well as powerful and efficient means for developing and describing tests are required. This paper therefore presents a new integration approach for modern test development and test management. Besides a very easy-to-use way of describing tests graphically, the main focus of the new approach is on the management of a large number of tests, test data, and test results, allowing close integration into the automotive development processes.",
+            "source_url": "https://doi.org/10.4271/2003-01-1024",
+            "authors": [
+                "Klaus Lamberg",
+                "Jobst Richert",
+                "Rainer Rasche"
+            ],
+            "categories": [
+                "VLSI and Analog Circuit Testing"
+            ],
+            "pdf_url": "",
+            "short_id": "W1591514967"
+        },
+        {
+            "title": "A highly configurable test system for evolutionary black-box testing of embedded systems",
+            "summary": "During the development of electronic control units (ECU) in domains like the automotive industry, tests are performed on various test platforms, such as model-in-the-loop, software-in-the-loop, processor-in-the-loop, and hardware-in-the-loop platforms in order to find faults in early development stages. Test cases must be specified to verify the properties demanded of the system on these test platforms. This is an expensive and non-trivial task. Evolutionary black-box testing, a recent approach to automating the creation of interesting test cases, can solve this task completely automatically.",
+            "source_url": "https://doi.org/10.1145/1569901.1570108",
+            "authors": [
+                "Peter M. Kruse",
+                "Joachim Wegener",
+                "Stefan Wappler"
+            ],
+            "categories": [
+                "VLSI and Analog Circuit Testing",
+                "Software Testing and Debugging Techniques",
+                "Real-time simulation and control systems"
+            ],
+            "pdf_url": "",
+            "short_id": "W1983766363"
+        },
+        {
+            "title": "Model-based automatic test case generation for automotive embedded software testing",
+            "summary": "",
+            "source_url": "https://doi.org/10.1007/s12239-018-0011-6",
+            "authors": [
+                "Ki-Wook Shin",
+                "Dong-Jin Lim"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Real-time simulation and control systems",
+                "Software Reliability and Analysis Research"
+            ],
+            "pdf_url": "",
+            "short_id": "W2756981344"
+        },
+        {
+            "title": "Retrieval-Augmented Test Generation: How Far Are We?",
+            "summary": "Retrieval Augmented Generation (RAG) has advanced software engineering tasks but remains underexplored in unit test generation. To bridge this gap, we investigate the efficacy of RAG-based unit test generation for machine learning (ML/DL) APIs and analyze the impact of different knowledge sources on their effectiveness.",
+            "source_url": "https://doi.org/10.1145/3744916.3773163",
+            "authors": [
+                "Jiho Shin",
+                "Nima Shiri Harzevili",
+                "Reem Aleithan",
+                "Hadi Hemmati",
+                "Song Wang"
+            ],
+            "categories": [
+                "Natural Language Processing Techniques",
+                "Topic Modeling",
+                "Web Data Mining and Analysis"
+            ],
+            "pdf_url": "",
+            "short_id": "W4403747681"
+        },
+        {
+            "title": "Design and Evaluation of an Executable Test Case Script Generator Framework Based on Natural Language Specifications in Automotive E-Mobility ECU Testing",
+            "summary": "Testing is crucial to develop reliable automotive software successfully and represents a vital part of the software’s life cycle as it verifies the correct behaviour of the implemented functionality. In order to identify bugs in the software, test cases must be designed and developed to be executed in a specific testing platform such as hardware-in-the-loop or test bench. Obtained testing results can improve the software code and assure that the implemented functionalities behave as expected. This thesis aims to improve software testing efficiency in terms of time savings and quality of test cases by automating part of the process for hardware-in-the-loop and test bench testing platforms of powertrain e- mobility automotive electronic control unit (ECU) software and its integration with other components such as the battery or the electric machine. For each software version of the automotive ECU, different tests must be conducted in different testing platforms to ensure that the software behaves as expected and that the interaction with the whole system fulfils the needed requirements. This process is highly automatable since executable test case scripts can perform these tests without any other human interaction. However, test scripts are explicitly programmed for a particular environment and cannot be reused in other platforms. In addition, executable test scripts are developed manually, which is human error-prone and labour-costly. Therefore, to improve current testing methods, the peculiarities of each testing environment and the overall testing workflow are analyzed to identify possible improvement opportunities later and present a viable solution that improves the current efficiency. This thesis presents an approach to increase the testing efficiency of powertrain e- mobility ECUs, which automatically generates executable test case scripts based on test case specifications in natural language for hardware-in-the-loop and test bench testing environments. This generator creates the XML code using the file format of the program ECU-Test later to allow the automatic execution in the testing platform. The central concept for the automatic generation of test case scripts is structured in two stages with an intermediate generic format in between. The generator is template-based and interprets the natural language by the use of keywords. In order to support the developed methodology, a generator application is developed as a proof of concept.",
+            "source_url": "https://hdl.handle.net/2117/362414",
+            "authors": [
+                "Gómez Chamarro, Sergio"
+            ],
+            "categories": [
+                "Real-Time Systems Scheduling",
+                "Real-time simulation and control systems",
+                "Modeling and Simulation Systems"
+            ],
+            "pdf_url": "",
+            "short_id": "W7009121049"
+        },
+        {
+            "title": "Improving Retrieval-Augmented Deep Assertion Generation via Joint Training",
+            "summary": "Unit testing attempts to validate the correctness of basic units of the software system under test and has a crucial role in software development and testing. However, testing experts have to spend a huge amount of effort to write unit test cases manually. Very recent work proposes a retrieve-and-edit approach to automatically generate unit test oracles,i.e.,assertions. Despite being promising, it is still far from perfect due to some limitations, such as splitting assertion retrieval and generation into two separate components without benefiting each other. In this paper, we propose AG-RAG, a retrieval-augmented automated assertion generation (AG) approach that leverages external codebases and joint training to address various technical limitations of prior work. Inspired by the plastic surgery hypothesis, AG-RAG attempts to combine relevant unit tests and advanced pre-trained language models (PLMs) with retrieval-augmented fine-tuning. The key insight of AG-RAG is to simultaneously optimize the retriever and the generator as a whole pipeline with a joint training strategy, enabling them to learn from each other. Particularly, AG-RAG builds a dense retriever to search for relevant test-assert pairs (TAPs) with semantic matching and a retrieval-augmented generator to synthesize accurate assertions with the focal-test and retrieved TAPs as input. Besides, AG-RAG leverages a code-aware language model CodeT5 as the cornerstone to facilitate both assertion retrieval and generation tasks. Furthermore, AG-RAG designs a joint training strategy that allows the retriever to learn from the feedback provided by the generator. This unified design fully adapts both components specifically for retrieving more useful TAPs, thereby generating accurate assertions. AG-RAG is a generic framework that can be adapted to various off-the-shelf PLMs. We extensively evaluate AG-RAG against six state-of-the-art AG approaches on two benchmarks and three metrics. Experimental results show that AG-RAG significantly outperforms previous AG approaches on all benchmarks and metrics,e.g.,improving the most recent baselineEditASby 20.82% and 26.98% in terms of accuracy. AG-RAG also correctly generates 1739 and 2866 unique assertions that all baselines fail to generate, 3.45X and 9.20X more thanEditAS. We further demonstrate the positive contribution of our joint training strategy,e.g.,AG-RAG improving a variant without the retriever by an average accuracy of 14.11%. Besides, adopting other PLMs can provide substantial advancement,e.g.,AG-RAG with four different PLMs improving EditAS by an average accuracy of 9.02%, highlighting the generalizability of our framework. Overall, our work demonstrates the promising potential of jointly fine-tuning the PLM-based retriever and generator to predict accurate assertions by incorporating external knowledge sources, thereby reducing the manual efforts of unit testing experts in practical scenarios.",
+            "source_url": "https://doi.org/10.1109/tse.2025.3545970",
+            "authors": [
+                "Quanjun Zhang",
+                "Chunrong Fang",
+                "Yi Zheng",
+                "Ruixiang Qian",
+                "Shengcheng Yu",
+                "Yuan Zhao",
+                "Jianyi Zhou",
+                "Yun Yang",
+                "Tao Zheng",
+                "Zhenyu Chen"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Software Engineering Research"
+            ],
+            "pdf_url": "",
+            "short_id": "W4407948936"
+        },
+        {
+            "title": "Acceleration of Automotive Software Development by Retrieval Augmented Integration Test Script Generation",
+            "summary": "Improving the efficiency of software integration testing is a critical challenge in the automotive industry, particularly as Electronic Control Unit (ECU) architectures become increasingly complex. This paper addresses the automation of integration test script generation by leveraging Large Language Models (LLMs) with Retrieval Augmented Generation (RAG). Specifically, we target the phase in which test engineers translate natural language test case specifications into executable scripts for integration test environments containing hardware debug interfaces. To bridge the knowledge gap between LLMs and domain-specific test tool APIs, we construct a task-oriented vector store that incorporates both API manuals and supplemental, workflow-centric information. By combining these with prompts containing code prefixes, our method enables LLMs to generate robust and correct integration test scripts. We evaluated our approach on typical test scenarios reflecting industry practices for multi-core ECUs. While the test cases used were not directly taken from a specific development project, they closely mirror those routinely employed across numerous automotive ECU development initiatives. The proposed method successfully generated executable scripts for all cases and reduced total test execution man-hours by 43% compared to a realistic baseline of manual execution. These results demonstrate the practical benefit of context-enriched LLMs in accelerating specialized software engineering tasks within the automotive domain, and it also identifies remaining challenges in extending automation to broader aspects such as test coverage, maintainability, and seamless process integration.",
+            "source_url": "https://doi.org/10.1109/ase63991.2025.00314",
+            "authors": [
+                "Masashi Mizoguchi",
+                "Kentaro Yoshimura",
+                "Keita NAKAZAWA",
+                "Y. Sato",
+                "Takahiro Iida",
+                "Fumio Narisawa"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Model-Driven Software Engineering Techniques",
+                "Real-time simulation and control systems"
+            ],
+            "pdf_url": "",
+            "short_id": "W7125960345"
+        },
+        {
+            "title": "Hybrid Retrieval-Augmented Generation för automatiserad testfallsgenerering för styrenheter : Ett ramverk för automatiserad verifiering av styrenheter med stora språkmodeller",
+            "summary": "Manual test case generation is a major bottleneck in the automotive industry, consuming significant engineering resources and slowing software verification cycles. This thesis addresses this challenge by developing a Hybrid Retrieval- Augmented Generation (RAG) pipeline that leverages Large Language Models (LLMs) to automate test case creation for Electronic Control Units (ECUs) within a custom testing framework. The pipeline integrates vector search, BM25 keyword retrieval, and Reciprocal Rank Fusion (RRF) to improve retrieval relevance and code generation accuracy. Three configurations were evaluated: baseline vector retrieval, Hybrid RAG, and Hybrid RAG with RRF across 100 test cases. The results show that the hybrid methods improve generation accuracy and functional correctness by up to 15%, while reducing test creation time from 15 minutes to approximately 15 seconds, with minimal runtime overhead. However, RRF’s benefits varied depending on query types, indicating that retrieval fusion effectiveness is contextdependent. Although further refinement is needed to enhance retrieval precision, contextual grounding, and consistency across diverse testing scenarios, the proposed RAG pipeline demonstrates overall that LLM-assisted automation can substantially accelerate ECU verification while maintaining code quality.",
+            "source_url": "http://urn.kb.se/resolve?urn=urn:nbn:se:kth:diva-376765",
+            "authors": [
+                "Imran Diva"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Model-Driven Software Engineering Techniques",
+                "Machine Learning and Algorithms"
+            ],
+            "pdf_url": "",
+            "short_id": "W7131498710"
+        },
+        {
+            "title": "Automated test-data generation from formal models of software",
+            "summary": "Verification and Validation (V&V) of software for critical embedded control systems often consumes upto 70% of the development resources. Testing is one of the most frequently used V&V technique for verifying such systems. Many regulatory agencies that certify control systems for use require that the software be tested to certain specified levels of coverage. Currently, developing test cases to meet these requirements takes a major portion of the resources. Automating this task would result in significant time and cost savings. The objective of this paper is to automate the generation of such test cases. We propose an approach where we rely on a formal model of the required software behavior for test-case generation, as well as, an oracle to determine if the implementation produced the correct output during testing.",
+            "source_url": "https://doi.org/10.1109/ase.2001.989851",
+            "authors": [
+                "Sanjai Rayadurgam"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Formal Methods in Verification",
+                "Software Reliability and Analysis Research"
+            ],
+            "pdf_url": "",
+            "short_id": "W2115220156"
+        },
+        {
+            "title": "REquirements TRacing On target (RETRO): improving software maintenance through traceability recovery",
+            "summary": "",
+            "source_url": "https://doi.org/10.1007/s11334-007-0024-1",
+            "authors": [
+                "Jane Huffman Hayes",
+                "Alex Dekhtyar",
+                "Senthil Karthikeyan Sundaram",
+                "Elizabeth Ashlee Holbrook",
+                "Sravanthi Vadlamudi",
+                "Alain April"
+            ],
+            "categories": [
+                "Software Engineering Research",
+                "Software Reliability and Analysis Research",
+                "Software Testing and Debugging Techniques"
+            ],
+            "pdf_url": "",
+            "short_id": "W2171144693"
+        },
+        {
+            "title": "The Risks of Coverage-Directed Test Case Generation",
+            "summary": "A number of structural coverage criteria have been proposed to measure the adequacy of testing efforts. In the avionics and other critical systems domains, test suites satisfying structural coverage criteria are mandated by standards. With the advent of powerful automated test generation tools, it is tempting to simply generate test inputs to satisfy these structural coverage criteria. However, while techniques to produce coverage-providing tests are well established, the effectiveness of such approaches in terms of fault detection ability has not been adequately studied. In this work, we evaluate the effectiveness of test suites generated to satisfy four coverage criteria through counterexample-based test generation and a random generation approach-where tests are randomly generated until coverage is achieved-contrasted against purely random test suites of equal size. Our results yield three key conclusions. First, coverage criteria satisfaction alone can be a poor indication of fault finding effectiveness, with inconsistent results between the seven case examples (and random test suites of equal size often providing similar-or even higher-levels of fault finding). Second, the use of structural coverage as a supplement-rather than a target-for test generation can have a positive impact, with random test suites reduced to a coverage-providing subset detecting up to 13.5 percent more faults than test suites generated specifically to achieve coverage. Finally, Observable MC/DC, a criterion designed to account for program structure and the selection of the test oracle, can-in part-address the failings of traditional structural coverage criteria, allowing for the generation of test suites achieving higher levels of fault detection than random test suites of equal size. These observations point to risks inherent in the increase in test automation in critical systems, and the need for more research in how coverage criteria, test generation approaches, the test oracle used, and system structure jointly influence test effectiveness.",
+            "source_url": "https://doi.org/10.1109/tse.2015.2421011",
+            "authors": [
+                "Gregory Gay",
+                "Matt Staats",
+                "Michael W. Whalen",
+                "Mats P. E. Heimdahl"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Software Reliability and Analysis Research",
+                "Software Engineering Research"
+            ],
+            "pdf_url": "",
+            "short_id": "W2083222184"
+        },
+        {
+            "title": "Plausible and adaptive requirement traceability structures",
+            "summary": "This paper presents an extension of a traceability system which automates the generation of traceability relations between textual requirement artefacts and object models using heuristic traceability rules. These rules match syntactically related terms in the textual parts of the requirements artefacts with related elements in an object model (e.g. classes, attributes, operations) and create traceability relations of different types when a match is found. The extension described in this paper measures beliefs in: (1) the ability of specific traceability rules to generate correct traceability relations, (2) the satisfiability of traceability rules by particular types of artefacts, and (3) the correctness of individual traceability relations. It also provides a mechanism with well-founded semantics for revising these beliefs on the basis of partial (and even conflicting) assessments of the relations that these rules generate provided by different users.",
+            "source_url": "https://doi.org/10.1145/568760.568786",
+            "authors": [
+                "George Spanoudakis"
+            ],
+            "categories": [
+                "Software Engineering Research",
+                "Web Applications and Data Management",
+                "Service-Oriented Architecture and Web Services"
+            ],
+            "pdf_url": "",
+            "short_id": "W1980640334"
+        },
+        {
+            "title": "Executable assertions and timed traces for on-line software error detection",
+            "summary": "The topic of this paper is the detection of errors due to residual faults in software, particularly those with temporary effects. After positioning our approach amongst existing fault tolerance and detection techniques, we propose detection mechanisms for such errors. These mechanisms are designed to detect both data and control flow errors. They can be validated by both formal and fault-injection techniques. In particular, we propose a timed trace technique allowing one to specify the expected software behavior and to instantiate from this specification a generic control-flow checking automaton. The critical algorithms of this automaton are formally proved. To develop these mechanisms, we also propose a design and validation method based on a monitoring specification. Finally, we apply these techniques on two cases of embedded real-time software in order not only to validate them but also to estimate their efficiency and applicability.",
+            "source_url": "https://doi.org/10.1109/ftcs.1996.534602",
+            "authors": [
+                "Christophe Rabéjac",
+                "J.-P. Blanquart",
+                "J. P. Queille"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Radiation Effects in Electronics",
+                "Software Reliability and Analysis Research"
+            ],
+            "pdf_url": "",
+            "short_id": "W2138653420"
+        },
+        {
+            "title": "On systematic design of globally consistent executable assertions in embedded software",
+            "summary": "Over the design of software (SW) used in provisioning of dependable services, Executable Assertions (EAs) are seeing increasing usage in aiding detection of data errors. Given the requirements for provision of service despite faults, early detection of system states that can potentially lead to system failure is valuable. We address the issue of ascertaining whether localized EAs in individual modules add up complementarily to implement a global EA/property. We first show that detection of globally compliant EAs is NP-complete. Thus, we develop a two-pass approach for our objective. In the first pass, we introduce the consistency property of EAs and use it to ascertain global conformity across all EAs. The second pass, analogous to predicate transformers, generates globally consistent EAs when any inconsistency is flagged in the first pass. We show the applicability of our approach on a real embedded system. Initial results obtained show that our framework is able to detect inherent vulnerabilities (due to placement of mismatched EAs) that were previously undetected. Our intent is automation of this approach, which can be incorporated in a compiler.",
+            "source_url": "https://doi.org/10.1145/513829.513843",
+            "authors": [
+                "Arshad Jhumka",
+                "Martin Hiller",
+                "Vilgot Claesson",
+                "Neeraj Suri"
+            ],
+            "categories": [
+                "Software System Performance and Reliability",
+                "Security and Verification in Computing",
+                "Software Reliability and Analysis Research"
+            ],
+            "pdf_url": "",
+            "short_id": "W2004960548"
+        },
+        {
+            "title": "Software implemented fault detection and fault tolerance mechanisms. Part 2, Experimental evaluation of error coverage",
+            "summary": "",
+            "source_url": "http://yadda.icm.edu.pl/yadda/element/bwmeta1.element.baztech-article-BWA4-0002-0059",
+            "authors": [
+                "Piotr Gawkowski",
+                "Janusz S. Sosnowski"
+            ],
+            "categories": [
+                "Software Reliability and Analysis Research",
+                "Software Engineering Research",
+                "Fault Detection and Control Systems"
+            ],
+            "pdf_url": "",
+            "short_id": "W1021978474"
+        },
+        {
+            "title": "Testing Retrieval-Augmented Generation Systems with Chunk Coverage",
+            "summary": "Retrieval-Augmented Generation (RAG)-based systems are increasingly deployed in high-stakes settings where correct behaviour depends not only on the language model but also on the retrieval component that selects external documents at inference time. While existing RAG evaluation metrics assess retrieval and generation quality on a per-query basis, typically relying on query-level test oracles such as reference answers or relevance annotations, they provide limited insight into whether a test suite adequately exercises the retrieval behaviour of the system as a whole. In this paper, we introduce Chunk Coverage (CC), an oracle-independent test adequacy criterion for testing the retrieval component of RAG systems. CC measures the fraction of corpus chunks that are retrieved at least once across a test suite, providing a structural view of which parts of the retrieval space have been exercised. We further show how CC can be used to guide test selection and generation by prioritising queries that expand coverage of previously unexercised retrieval regions. We evaluate CC on clinical and financial RAG system scenarios. CC-guided testing reaches 50% of attainable coverage 1.7x faster than random selection and 4.2x faster than redundancy-biased strategies. Moreover, CC improves fault detection effectiveness (APFD) by 10% to 25% over random, indicating earlier discovery of distinct retrieval faults. These results show that CC captures retrieval diversity relevant to effective testing without requiring test oracles.",
+            "source_url": "https://doi.org/10.1145/3832208",
+            "authors": [
+                "Jinhan Kim",
+                "Samuele Pasini",
+                "Paolo Tonella"
+            ],
+            "categories": [
+                "Information Retrieval and Search Behavior",
+                "Topic Modeling",
+                "Biomedical Text Mining and Ontologies"
+            ],
+            "pdf_url": "",
+            "short_id": "W7169859113"
+        },
+        {
+            "title": "Generation Of Analytical Redundancy Relations For Fault Detection",
+            "summary": "",
+            "source_url": "https://doi.org/10.1109/sicici.1992.637676",
+            "authors": [
+                "Philippe Declerck",
+                "M. Staroswjecki"
+            ],
+            "categories": [
+                "Fault Detection and Control Systems",
+                "Advanced Data Processing Techniques",
+                "Machine Fault Diagnosis Techniques"
+            ],
+            "pdf_url": "",
+            "short_id": "W2148771403"
+        },
+        {
+            "title": "EQUITAS: A tool-chain for functional safety and reliability improvement in automotive systems",
+            "summary": "",
+            "source_url": "https://cea.hal.science/cea-01845196",
+            "authors": [
+                "Réda Nouacer",
+                "Manel Djemal",
+                "Smaïl Niar",
+                "Gilles Mouchard",
+                "Nicolas Rapin",
+                "Jean-Pierre Gallois",
+                "Philippe Fiani",
+                "François Chastrette",
+                "Arnault Lapitre",
+                "Toni Adriano",
+                "Bryan MacEachen"
+            ],
+            "categories": [
+                "Radiation Effects in Electronics",
+                "Software Reliability and Analysis Research",
+                "Safety Systems Engineering in Autonomy"
+            ],
+            "pdf_url": "",
+            "short_id": "W2476450546"
+        },
+        {
+            "title": "Silent-failure detection in RAG pipelines: A controlled fault-injection study of multi-layer quality gates",
+            "summary": "Retrieval-augmented generation (RAG) systems answer a user query by first retrieving evidence from an external document collection and then asking a language model to generate a response from that evidence. This workflow is useful for domain-specific and citation-oriented applications, but it also creates hidden failure points. A response may look fluent and relevant even when the retrieved evidence is outdated, the needed passage has been truncated, the citation no longer points to the supporting source, or the system has silently used a fallback path without retrieval. We study this deployment-relevant failure mode under the term silent failure : an execution in which a response passes a coarse answer-level acceptability check but violates at least one deeper evidence, citation, abstention, provenance, or operational criterion. We report a controlled offline fault-injection study across three RAG system baselines: a sparse BM25 baseline, a dense BGE-based baseline, and a hybrid BM25+dense system with reranking. The injected faults cover stale indexes, chunk-boundary corruption, embedding mismatch, top- k truncation, reranker disabling, distractor injection, context overflow, context shuffling, prompt drift, citation suppression, fallback bypass, and duplicate-source inflation. The study instruments retrieval diagnostics, context-level measurements, answer-level factuality assessment, citation checks, runtime signals, and candidate gate decisions over 146,016 query execution traces. In this experimental setting, several fault classes preserved answer-level acceptability while degrading evidence support, citation correctness, abstention behavior, or provenance retention. Compared with single-layer detector baselines based on retrieval, faithfulness, citation integrity, or operations alone, the evaluated composite multi-layer gate achieved stronger held-out detector metrics under the selected injected faults. The findings motivate pre-release validation and runtime-observability templates for RAG pipelines, while emphasizing that the reported thresholds are validation operating points and require deployment-specific calibration before production use.",
+            "source_url": "https://doi.org/10.1016/j.rineng.2026.113085",
+            "authors": [
+                "Mohammad Tanhaei"
+            ],
+            "categories": [
+                "Electrical Fault Detection and Protection",
+                "Structural Integrity and Reliability Analysis",
+                "Water Systems and Optimization"
+            ],
+            "pdf_url": "",
+            "short_id": "W7213964892"
+        },
+        {
+            "title": "Evolutionary Safety Testing of Embedded Control Software by Automatically Generating Compact Test Data Sequences",
+            "summary": "Whereas the verification of non-safety-related, embedded software typically focuses on demonstrating that the implementation fulfills its functional requirements, this is not sufficient for safety-relevant systems. In this case, the control software must also meet application-specific safety requirements. Safety requirements typically arise from the application of hazard and/or safety analysis techniques, e.g. FMEA, FTA or SHARD. During the downstream development process it must be shown that these requirements cannot be violated. This can be achieved utilizing different techniques. One way of providing evidence that violations of the safety properties identified cannot occur is to thoroughly test each of the safety requirements.",
+            "source_url": "https://doi.org/10.4271/2005-01-0750",
+            "authors": [
+                "Hartmut Pohlheim",
+                "Mirko Conrad",
+                "Arne Griep"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Software Reliability and Analysis Research",
+                "Software Engineering Research"
+            ],
+            "pdf_url": "",
+            "short_id": "W2165939267"
+        },
+        {
+            "title": "An industrial case study of structural testing applied to safety-critical embedded software",
+            "summary": "Effective testing of safety-critical real-time embedded software is difficult and expensive. Many companies are hesitant about the cost of formalized criteria-based testing and are not convinced of the benefits. This paper presents the results of an industrial case study that compared the normal testing at a company (manual functional testing) with testing based on the logic-based criterion of correlated active clause coverage (CACC). The evaluation was performed during the testing of embedded, real-time control software that has been deployed in a safety-critical application in the transportation industry. We found in our study that the test cases generated to satisfy the CACC criterion detected major safety-critical faults that were not detected by functional testing. We also found that the cost required for CACC testing was not necessarily higher than the cost of functional testing. There were also several faults that were found by the functional tests that were not found by CACC tests.",
+            "source_url": "https://doi.org/10.1145/1159733.1159774",
+            "authors": [
+                "Jing Guan",
+                "Jeff Offutt",
+                "Paul Ammann"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Software Reliability and Analysis Research",
+                "Safety Systems Engineering in Autonomy"
+            ],
+            "pdf_url": "",
+            "short_id": "W2130274399"
+        },
+        {
+            "title": "Fault-model-based test generation for embedded software",
+            "summary": "Testing embedded software systems on the control units of vehicles is a safety-relevant task, and developing the test suites for performing the tests on test benches is time-consuming. We present the foundations and results of a case study to automate the generation of tests for control software of vehicle control units based on a specification of requirements in terms of finite state machines. This case study builds upon our previous work on generation of tests for physical systems based on relational behavior models. In order to apply the respective algorithms, the finite state machine representation is transformed into a relational model. We present the transformation, the application of the test generation algorithm to a real example, and discuss the results and some specific challenges regarding software testing.",
+            "source_url": "http://ijcai.org/Proceedings/07/Papers/053.pdf",
+            "authors": [
+                "Michael Esser",
+                "Peter Struß"
+            ],
+            "categories": [
+                "Formal Methods in Verification",
+                "Petri Nets in System Modeling",
+                "Software Testing and Debugging Techniques"
+            ],
+            "pdf_url": "",
+            "short_id": "W184279110"
+        },
+        {
+            "title": "EQUITAS: A tool-chain for functional safety and reliability improvement in automotive systems",
+            "summary": "",
+            "source_url": "https://cea.hal.science/cea-01845196",
+            "authors": [
+                "Réda Nouacer",
+                "Manel Djemal",
+                "Smaïl Niar",
+                "Gilles Mouchard",
+                "Nicolas Rapin",
+                "Jean-Pierre Gallois",
+                "Philippe Fiani",
+                "François Chastrette",
+                "Arnault Lapitre",
+                "Toni Adriano",
+                "Bryan MacEachen"
+            ],
+            "categories": [
+                "Radiation Effects in Electronics",
+                "Software Reliability and Analysis Research",
+                "Safety Systems Engineering in Autonomy"
+            ],
+            "pdf_url": "",
+            "short_id": "W2476450546"
+        },
+        {
+            "title": "Effective test strategy for testing automotive software",
+            "summary": "Electronic content is increasing in automobiles day by day. Functionalities like Air Bags, Anti-lock Braking, Driver Assistance Systems, Body Controllers, Passive entry Passive Start, Electronic Power Steering etc. are realized electronically with complex software. These functionalities are related to automobile system safety. Hence, safety is one of the key issues of future automobile development. Risk of system failure is high due to increasing technological complexity and software content. The software shall be tested well to arrest almost all the defects. This paper explains a test case development and execution strategy based on practical implementation. It explains how test case reduction using Taguchi method, prioritization of test execution and automation help to make testing effective. It also demonstrates how maximum defects are discovered in short time.",
+            "source_url": "https://doi.org/10.1109/iic.2015.7150821",
+            "authors": [
+                "Sujit Sopan Barhate"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Software Reliability and Analysis Research",
+                "Real-time simulation and control systems"
+            ],
+            "pdf_url": "",
+            "short_id": "W1515386610"
+        },
+        {
+            "title": "A Search-Based Automated Test-Data Generation Framework for Safety Critical Software",
+            "summary": "",
+            "source_url": "http://hdl.handle.net/10068/624308",
+            "authors": [
+                "Tracey, N.J."
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Software Reliability and Analysis Research",
+                "Safety Systems Engineering in Autonomy"
+            ],
+            "pdf_url": "",
+            "short_id": "W7015174691"
+        },
+        {
+            "title": "Automatic Test Case Generation for Safety-Related Embedded Systems",
+            "summary": "",
+            "source_url": "https://doi.org/10.4271/2008-01-0114",
+            "authors": [
+                "Peter Dämon"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Formal Methods in Verification",
+                "Software Reliability and Analysis Research"
+            ],
+            "pdf_url": "",
+            "short_id": "W2280251246"
+        },
+        {
+            "title": "EmbC-Test: How to Speed Up Embedded Software Testing Using LLMs and RAG",
+            "summary": "Manual development of automatic tests for embedded C software is a strenuous and time-consuming task that does not scale well. With the accelerating pace of software release cycles, verification increasingly becomes the bottleneck in the embedded development workflow. This paper presents a Retrieval-Augmented Generation (RAG) pipeline as a solution for partial automation of the verification process. By grounding a large language model in project-specific artifacts, the approach reduces hallucinations and improves project alignment. An industrial evaluation showed that the generated tests are 100 % syntactically correct, with 85 % successfully passing runtime validation. The proposed solution has the potential to save up to 66 % of the testing time compared to manual test writing while generating 270 tests per hour.",
+            "source_url": "http://arxiv.org/abs/2603.09497",
+            "authors": [
+                "Maximilian Harnot",
+                "Sebastian Komarnicki",
+                "Michal Polok",
+                "Timo Oksanen"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Model-Driven Software Engineering Techniques",
+                "Software System Performance and Reliability"
+            ],
+            "pdf_url": "https://arxiv.org/pdf/2603.09497",
+            "short_id": "W7134888471"
+        },
+        {
+            "title": "Functional safety management aspects in testing of automotive safety concern systems (electronic braking system)",
+            "summary": "Industrial automation systems are tested nowadays mainly via system tests at a very late stage of development. These tests are conducted manually, are time-consuming and cost-intensive. Earlier testing of automation software, e.g., component testing is therefore desired in order to reduce the effort for system testing by detecting errors sooner. In this paper we present an improved concept for a test environment that enables developers of industrial control electronics to test the functionality of Automotive safety concern systems such as Electronic brake system (EBS)/ Electronic stability control (ESC) software components. There is no need to change the automation software for testing. We propose the use of Virtual test environment tool that uses Tool command language (TCL) scripting to implement tests because such languages have inherent properties that are useful for testing of the EBS tasks. We provide example code of a typical test cases used for EBS.",
+            "source_url": "https://doi.org/10.1109/icectech.2011.5941627",
+            "authors": [
+                "V K Navinkumar",
+                "R K Archana"
+            ],
+            "categories": [
+                "Safety Systems Engineering in Autonomy",
+                "Real-time simulation and control systems",
+                "Software Testing and Debugging Techniques"
+            ],
+            "pdf_url": "",
+            "short_id": "W1963766515"
+        },
+        {
+            "title": "AutoHIL: LLM-Based ECU Functional Test Generation through Domain Knowledge Augmentation",
+            "summary": "System functional testing is a critical step before the production release of automotive electronic control units (ECUs), especially for safety-critical functions. It is typically performed on hardware-in-the-loop (HIL) benches, and engineers translate functional requirements in natural language into executable test scripts using bench-specific APIs (or test harness primitives (THPs)). Existing research either focuses on generating abstract test cases that lack execution capability, or relies on bench-specific solutions that cannot be generalized. Consequently, industrial practice remains labor-intensive, and is hindered by three main challenges, i.e., the high learning cost of THPs, the incompleteness of functional requirements due to missing tacit domain knowledge (e.g., power management dependencies or system wake-up sequences), and the limited automation. To address these challenges, we propose AUTOHIL, an LLM-based, domain-knowledge-augmented framework for requirement-driven ECU functional test generation on HIL benches. AUTOHIL automatically constructs a THP knowledge base to understand bench operations, extracts tacit domain knowledge from AUTOSAR ECU source code and configurations to augment requirements, and generates test scripts for the augmented requirements based on the THP knowledge base. We evaluate AUTOHIL on two industrial ECUs, i.e., an Airbag Control Unit (ACU) on an in-house bench and an Active Safety Domain Master (ASDM) on a dSPACE platform. AUTOHIL achieves test script executability of 90.33% on ACU and 81.31% on ASDM. We also manually evaluate the functional equivalence between generated scripts and manual scripts, and AUTOHIL reaches a functional correctness of 89.69% on ACU and 84.00% on ASDM. We discover 39 and 25 new functional defects in ACU and ASDM, which have been patched by technicians from the supplier.",
+            "source_url": "https://doi.org/10.1145/3832155",
+            "authors": [
+                "Sichen Gong",
+                "Qing‐Quan Chen",
+                "Bihuan Chen",
+                "Wei Zhang",
+                "Yukun Gao",
+                "Xin Peng"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Formal Methods in Verification",
+                "VLSI and Analog Circuit Testing"
+            ],
+            "pdf_url": "",
+            "short_id": "W7215028380"
+        }
+    ],
+    "filtered_retrievals": [
+        {
+            "title": "Acceleration of Automotive Software Development by Retrieval Augmented Integration Test Script Generation",
+            "summary": "Automates generation of executable automotive integration test scripts from natural-language specifications using LLMs with Retrieval-Augmented Generation (RAG). Uses a task-oriented vector store combining API manuals and workflow-centric info; reports executable-script generation and a 43% reduction in execution man-hours versus manual execution.",
+            "source_url": "https://doi.org/10.1109/ase63991.2025.00314",
+            "authors": [
+                "Masashi Mizoguchi",
+                "Kentaro Yoshimura",
+                "Keita NAKAZAWA",
+                "Y. Sato",
+                "Takahiro Iida",
+                "Fumio Narisawa"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Model-Driven Software Engineering Techniques",
+                "Real-time simulation and control systems"
+            ],
+            "pdf_url": "",
+            "short_id": "W7125960345"
+        },
+        {
+            "title": "Design and Evaluation of an Executable Test Case Script Generator Framework Based on Natural Language Specifications in Automotive E-Mobility ECU Testing",
+            "summary": "Thesis proposing an approach to improve ECU testing efficiency by automatically generating executable test case scripts from natural-language test specifications. Generates XML code for the ECU-Test format, enabling execution on HIL/test bench; focuses on reducing manual, error-prone script development.",
+            "source_url": "https://hdl.handle.net/2117/362414",
+            "authors": [
+                "Gómez Chamarro, Sergio"
+            ],
+            "categories": [
+                "Real-Time Systems Scheduling",
+                "Real-time simulation and control systems",
+                "Modeling and Simulation Systems"
+            ],
+            "pdf_url": "",
+            "short_id": "W7009121049"
+        },
+        {
+            "title": "AutoHIL: LLM-Based ECU Functional Test Generation through Domain Knowledge Augmentation",
+            "summary": "Proposes AUTOHIL, an LLM-based, domain-knowledge-augmented framework for requirement-driven ECU functional test generation on HIL benches. Builds a THP knowledge base and augments requirements with tacit domain knowledge extracted from AUTOSAR artifacts, then generates executable test scripts; reports executability and functional correctness and defect discovery.",
+            "source_url": "https://doi.org/10.1145/3832155",
+            "authors": [
+                "Sichen Gong",
+                "Qing‐Quan Chen",
+                "Bihuan Chen",
+                "Wei Zhang",
+                "Yukun Gao",
+                "Xin Peng"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Formal Methods in Verification",
+                "VLSI and Analog Circuit Testing"
+            ],
+            "pdf_url": "",
+            "short_id": "W7215028380"
+        },
+        {
+            "title": "Hybrid Retrieval-Augmented Generation för automatiserad testfallsgenerering för styrenheter : Ett ramverk för automatiserad verifiering av styrenheter med stora språkmodeller",
+            "summary": "Thesis developing a Hybrid RAG pipeline with LLMs to automate ECU test case creation in a custom testing framework. Integrates vector search, BM25 retrieval, and Reciprocal Rank Fusion; reports improved generation accuracy/correctness and substantial time reduction for ECU test creation.",
+            "source_url": "http://urn.kb.se/resolve?urn=urn:nbn:se:kth:diva-376765",
+            "authors": [
+                "Imran Diva"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Model-Driven Software Engineering Techniques",
+                "Machine Learning and Algorithms"
+            ],
+            "pdf_url": "",
+            "short_id": "W7131498710"
+        },
+        {
+            "title": "EmbC-Test: How to Speed Up Embedded Software Testing Using LLMs and RAG",
+            "summary": "RAG-based pipeline for partial automation of embedded C test generation by grounding an LLM in project-specific artifacts to reduce hallucinations. Industrial evaluation reports syntactic correctness, runtime validation success, and up to ~66% testing-time savings compared to manual test writing.",
+            "source_url": "http://arxiv.org/abs/2603.09497",
+            "authors": [
+                "Maximilian Harnot",
+                "Sebastian Komarnicki",
+                "Michal Polok",
+                "Timo Oksanen"
+            ],
+            "categories": [
+                "Software Testing and Debugging Techniques",
+                "Model-Driven Software Engineering Techniques",
+                "Software System Performance and Reliability"
+            ],
+            "pdf_url": "https://arxiv.org/pdf/2603.09497",
+            "short_id": "W7134888471"
+        }
+    ]
+}

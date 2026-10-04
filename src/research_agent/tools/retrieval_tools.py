@@ -5,6 +5,10 @@ import requests
 import os
 from typing import Any, Optional
 
+from logging import getLogger
+
+logger = getLogger()
+
 load_dotenv()
 
 
@@ -150,13 +154,13 @@ def open_alex_search(
     tool interface. OpenAlex returns its standard work representation, which
     this tool normalizes below.
     """
-
+    logger.info(f"Search Open Alex for : {query}")
     # Define the API endpoint URL
     url = "https://api.openalex.org/works"
 
     # Define the query parameters
     query_params = {
-        "search": query,
+        "search.semantic": query,
         "per_page": max_results,
     }
     if api_key := os.environ.get("OPENALEX_API_KEY"):
@@ -165,6 +169,8 @@ def open_alex_search(
     response = requests.get(url, params=query_params, timeout=30)
     response.raise_for_status()
     results = response.json().get("results", [])
+
+    logger.info(f"Found {len(results)} results.")
 
     return [_normalize_openalex_work(work) for work in results]
 

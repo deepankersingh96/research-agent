@@ -52,7 +52,7 @@ class Concept(BaseModel):
 
 
 class Query(BaseModel):
-    database: Literal["arXiv", "semantic_scholar", "bioRxiv"]
+    database: Literal["arXiv", "openalex", "semantic_scholar"]
     search_strings: list[str] = Field(description="Final searchable string formatted as per the database type.")
 
 
@@ -76,8 +76,9 @@ class Retrieval(BaseModel):
     short_id: str
 
 class ListRetrievals(BaseModel):
-    list[Retrieval]
+    retrievals: list[Retrieval]
 
 class RetrieverState(QueryExpansionState):
+    retrievals: ListRetrievals = []
     filtered_retrievals: ListRetrievals
     deduplicated_retrievals: ListRetrievals
