@@ -6,7 +6,11 @@ from pydantic import BaseModel, Field
 
 from research_agent.state import RetrieverState, ListRetrievals, Retrieval
 from research_agent.utils import render_yaml_prompt
-from research_agent.tools.retrieval_tools import search_arxiv, semantic_scholar_search, open_alex_search
+from research_agent.tools.retrieval_tools import (
+    search_arxiv,
+    semantic_scholar_search,
+    open_alex_search,
+)
 
 # Define prompts
 
@@ -24,10 +28,7 @@ class RetrievalAgent:
 
     def retriever_node(self, state: dict):
         print("Running Retriever Node")
-        result = self.model_with_tools.invoke(
-            [
-                SystemMessage(
-                    content=f"""
+        result = self.model_with_tools.invoke([SystemMessage(content=f"""
 You are a retrieval agent who's job is to search research papers in dabases like arxiv, semantic scholar, openalex, etc. 
 You must use only the available tools for a specified database to retrieve results against the query strings. 
 You do not have to retrieve results for all the databases. Retrieve results for only the user provided databases. 
@@ -40,24 +41,21 @@ Max papers to retrieve per query:
 
 The expanded search queries are given below:
 {state["expanded_queries"]["queries"]}
-"""
-                )
-            ]
-        )
+""")])
         return {
             "messages": [result],
             "llm_call": state.get("llm_call", 0) + 1,
         }
 
-    def tool_node(self, state: dict): 
-        """ TODO: a generic tool_node is not fitting the architecture. 
-        filteration_node fetches the last message - which is supposed to be  
-        output from retrieval tool -- specific. 
+    def tool_node(self, state: dict):
+        """TODO: a generic tool_node is not fitting the architecture.
+        filteration_node fetches the last message - which is supposed to be
+        output from retrieval tool -- specific.
 
-        Think of orchestration as a main orchestrator. 
-        All the tools are available to this orchestrator. 
-        The orchestrator has tools, skills and sub-agents at its disposal. 
-        The skills also have tools and sub-agents at their disposal. 
+        Think of orchestration as a main orchestrator.
+        All the tools are available to this orchestrator.
+        The orchestrator has tools, skills and sub-agents at its disposal.
+        The skills also have tools and sub-agents at their disposal.
 
         Skills and sub-agents can have thier own states and checklists.
 
@@ -74,48 +72,68 @@ The expanded search queries are given below:
                 ToolMessage(content=observation, tool_call_id=tool_call["id"])
             )
 
-            if tool_call["name"] in ["search_arxiv", "open_alex_search", "semantic_scholar_search"]:
+            if tool_call["name"] in [
+                "search_arxiv",
+                "open_alex_search",
+                "semantic_scholar_search",
+            ]:
                 retrievals.extend(observation)
 
-        return {
-            "messages": results,
-            "retrievals": retrievals
-        }
+        return {"messages": results, "retrievals": retrievals}
 
     def filteration_node(self, state: dict):
-        print("Running filteration Node")
         """Filter results that are relevant for the user query using LLM judge"""
 
+        print("Running filteration Node")
+
+        class RelevencyScore(BaseModel):
+            is_relevant: bool = Field(
+                description="True if the paper is relevant for the input question, False otherwise."
+            )
+            score: int = Field(
+                description="Over all LLM judge score out of 10. 0 = least relevant, 10 = most relevant."
+            )
+            reasoning: str = Field(
+                description="According to the research question formulation like PICO, PICOC, etc, "
+                "why or why not the paper was relevant for given population, intervention, context, etc. "
+            )
+
         retrievals = state["deduplicated_retrievals"]  # list of retrievals
+        annotated_retrievals = []
 
         all_filtered_retrievals = []
 
-        filtered_retrievals = self.model.with_structured_output(
-            ListRetrievals
-        ).invoke(
-            [SystemMessage(content=f"""
-You are a research assistant agent, your job is to filter the retreived papers from databases like arxiv, pubmed, etc. based on the user query. 
-You will be provided the original research question formulated by the user. 
-Your main job is to check the abstract or summary of the fetched papers and select only the relevant papers from the entire list. 
-Give a list of relevant papers in the defined structured output format. 
+        for paper_data in retrievals:
 
-Original user question: 
-{state["formulated_question"]}
+            llm_judge_output = self.model.with_structured_output(RelevencyScore).invoke(
+                [SystemMessage(content=f"""
+                You are a research assistant agent, your job is to filter the retreived papers from databases like arxiv, pubmed, etc. based on the user query. 
+                You will be provided the original research question formulated by the user. 
+                Your main job is to check the title, abstract or summary of the fetched papers and output if the paper is relevant or not. 
+                Give the final relevance, relevance score and your reasoning for a given paper and original research question. 
+
+                Original user question: 
+                {state["formulated_question"]}
 
 
-Retreived papers:
-{retrievals}
-""")]
+                Retreived papers:
+                {paper_data}
+                    """)]
+            )
+
+            if llm_judge_output.is_relevant:
+                all_filtered_retrievals.append(paper_data)
+
+            paper_data["relevancy"] = llm_judge_output.model_dump(mode="json")
+            annotated_retrievals.append(paper_data)
+
+        print(
+            f"Found {len(all_filtered_retrievals)} / {len(retrievals)} relevant papers"
         )
 
-        print("filtered_retrievals")
-        print(filtered_retrievals)
-
-        all_filtered_retrievals += filtered_retrievals.retrievals
-
-        print(f"Found {len(all_filtered_retrievals)} / {len(retrievals)} relevant papers")
-
-        return {"filtered_retrievals": all_filtered_retrievals}
+        return {
+            "filtered_retrievals": all_filtered_retrievals,
+        }
 
     def deduplication_node(self, state: dict):
         print("Running deduplication node")
@@ -130,7 +148,9 @@ Retreived papers:
             deduplicated_retrievals.append(ret)
             ids.add(ret["short_id"])
 
-        print(f"Found {len(deduplicated_retrievals)} / {len(retrievals)} unique results.")
+        print(
+            f"Found {len(deduplicated_retrievals)} / {len(retrievals)} unique results."
+        )
 
         return {"deduplicated_retrievals": deduplicated_retrievals}
 
@@ -150,7 +170,10 @@ Retreived papers:
         agent_builder.add_edge(START, "retriever_node")
         agent_builder.add_edge("retriever_node", "tool_node")
         agent_builder.add_edge("tool_node", "deduplication_node")
-        agent_builder.add_edge("deduplication_node", "filteration_node", )
+        agent_builder.add_edge(
+            "deduplication_node",
+            "filteration_node",
+        )
         agent_builder.add_edge("filteration_node", END)
 
         return agent_builder

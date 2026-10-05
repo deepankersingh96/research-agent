@@ -2,3 +2,4 @@
 .env
 .agent
 **.egg-info
+test/stubs/**
