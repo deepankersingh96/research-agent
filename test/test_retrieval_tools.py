@@ -17,6 +17,19 @@ class FakeResponse:
 
 
 class OpenAlexNormalizationTests(unittest.TestCase):
+    def test_prefers_openalex_cached_pdf_url(self):
+        work = {
+            "id": "https://openalex.org/W123",
+            "content_urls": {"pdf": "https://content.openalex.org/works/W123.pdf"},
+            "best_oa_location": {"pdf_url": "https://arxiv.org/pdf/1234.5678"},
+        }
+
+        retrieval = _normalize_openalex_work(work)
+
+        self.assertEqual(
+            retrieval["pdf_url"], "https://content.openalex.org/works/W123.pdf"
+        )
+
     def test_normalizes_openalex_work_and_prefers_best_oa_location(self):
         work = {
             "id": "https://openalex.org/W123",
@@ -47,6 +60,17 @@ class OpenAlexNormalizationTests(unittest.TestCase):
         self.assertEqual(retrieval["categories"], ["Information retrieval"])
         self.assertEqual(retrieval["short_id"], "W123")
         Retrieval.model_validate(retrieval)
+
+    def test_falls_back_to_primary_location_pdf_url(self):
+        work = {
+            "id": "https://openalex.org/W124",
+            "best_oa_location": {"pdf_url": ""},
+            "primary_location": {"pdf_url": "https://publisher.example/paper.pdf"},
+        }
+
+        retrieval = _normalize_openalex_work(work)
+
+        self.assertEqual(retrieval["pdf_url"], "https://publisher.example/paper.pdf")
 
     def test_handles_missing_optional_openalex_fields(self):
         retrieval = _normalize_openalex_work({"id": "https://openalex.org/W456"})

@@ -31,8 +31,15 @@ def _reconstruct_abstract(
 
 def _location_url(work: dict[str, Any], key: str) -> str:
     """Prefer the best OA copy, then the primary publication location."""
+
+    # 1. Check top-tier locations first
     for location_name in ("best_oa_location", "primary_location"):
         location = work.get(location_name) or {}
+        if value := location.get(key):
+            return value
+
+    # 2. Fallback: Scan ALL locations to catch merged repositories (like arXiv)
+    for location in work.get("locations") or []:
         if value := location.get(key):
             return value
     return ""
@@ -45,6 +52,7 @@ def _normalize_openalex_work(work: dict[str, Any]) -> dict[str, Any]:
         or work.get("doi")
         or work.get("id", "")
     )
+    content_urls = work.get("content_urls") or {}
 
     return {
         "title": work.get("title") or "",
@@ -60,7 +68,7 @@ def _normalize_openalex_work(work: dict[str, Any]) -> dict[str, Any]:
             for topic in work.get("topics") or []
             if topic.get("display_name")
         ],
-        "pdf_url": _location_url(work, "pdf_url"),
+        "pdf_url": content_urls.get("pdf") or _location_url(work, "pdf_url"),
         "short_id": (work.get("id") or "").rstrip("/").rsplit("/", 1)[-1],
     }
 
@@ -162,6 +170,7 @@ def open_alex_search(
     query_params = {
         "search.semantic": query,
         "per_page": max_results,
+        "filter": "is_oa:true" 
     }
     if api_key := os.environ.get("OPENALEX_API_KEY"):
         query_params["api_key"] = api_key
@@ -178,7 +187,7 @@ def open_alex_search(
 if __name__ == "__main__":
     from pprint import pprint
 
-    clean_query = "retrieval augmented generation"
+    clean_query = "(all:\"ECU software\" OR all:embedded OR all:\"automotive embedded\") AND (all:\"retrieval augmented generation\" OR all:RAG OR all:\"retrieval-augmented generation\") AND (all:\"test scripts\" OR all:\"test case\" OR all:\"test code\")"
 
     retrievals = open_alex_search.invoke({"query": clean_query, "max_results": 5})
     pprint(retrievals)

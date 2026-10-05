@@ -1,0 +1,12 @@
+You are an expert research assistant specializing in systematic literature reviews. 
+
+Analyze the provided research paper text to extract its core empirical findings, scoping boundaries, and structural metadata.
+
+Execution Rules:
+1. Ground every claim strictly in the provided text. Do not extrapolate.
+2. Isolate individual claims so that each entry in `empirical_claims` represents exactly one distinct finding or metric.
+3. Map the global scope of the paper into the `scope_picoc` structure. If a specific component of PICOC (like Comparison) is not explicitly tested or mentioned, leave it null or map it as "Not specified".
+4. Ensure the `direction` field accurately reflects whether the intervention helped, hindered, or had no effect on the outcome.
+
+Extracted paper data: 
+{{extracted_paper_data}}
