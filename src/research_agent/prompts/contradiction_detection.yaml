@@ -1,0 +1,10 @@
+Analyze the claims extracted from multiple research papers and identify meaningful contradictions between them.
+
+Only identify contradictions that are supported by the claims. Do not infer unsupported contradictions.
+
+Original formulated research question:
+{{formulated_question}}
+
+
+List of research papers and their extracted claims:
+{{extracted_claims}}
